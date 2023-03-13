@@ -1,15 +1,13 @@
-import { ContactForm } from 'components/ContactForm/ContactForm';
-import { Filter } from 'components/Filter/Filter';
-import { ContactList } from 'components/ContactList/ContactList';
+import { BrowserRouter } from 'react-router-dom';
 
-import css from './App.module.css';
+import NavBar from 'components/NavBar/NavBar';
+import UserRoutes from './UserRoutes';
 
 export function App() {
   return (
-    <div className={css.phonebook}>
-      <ContactForm />
-      <Filter />
-      <ContactList />
-    </div>
+    <BrowserRouter basename="/goit-react-hw-08-phonebook">
+      <NavBar />
+      <UserRoutes />
+    </BrowserRouter>
   );
 }
