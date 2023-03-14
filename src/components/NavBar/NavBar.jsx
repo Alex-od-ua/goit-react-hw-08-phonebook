@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
+import NavBarAuth from './NavBarAuth/NavBarAuth';
 import items from './item';
 import css from './NavBar.module.css';
 
@@ -18,7 +19,14 @@ const NavBar = () => {
 
   return (
     <div className={css.navbar}>
-      <ul className={css.menu}>{elements}</ul>
+      <div className={css.container}>
+        <div>
+          <ul className={css.menu}>{elements}</ul>
+        </div>
+        <div>
+          <NavBarAuth />
+        </div>
+      </div>
     </div>
   );
 };

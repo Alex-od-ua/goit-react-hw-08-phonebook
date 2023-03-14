@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Loader from 'components/Loader/Loader';
+import Loader from 'shared/components/Loader/Loader';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const ContactsPage = lazy(() =>

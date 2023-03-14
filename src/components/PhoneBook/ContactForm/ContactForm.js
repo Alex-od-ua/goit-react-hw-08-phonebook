@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { useState } from 'react';
+import { nanoid } from 'nanoid';
+
 import {
   fetchAllContacts,
   fetchAddContact,
 } from 'Redux/contacts/contacts-operations';
-
-import { useState } from 'react';
-import { nanoid } from 'nanoid';
 
 import css from './ContactForm.module.css';
 
