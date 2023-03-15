@@ -7,3 +7,7 @@ const authInstance = axios.create({
 export const signupUser = data => {
   return authInstance.post('users/signup', data);
 };
+
+export const userLogin = data => {
+  return authInstance.post('/users/login', data);
+};
