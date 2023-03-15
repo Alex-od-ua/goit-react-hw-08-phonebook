@@ -12,11 +12,11 @@ import {
 import css from './ContactForm.module.css';
 
 export function ContactForm() {
-  const [contact, setContacts] = useState({ name: '', phone: '' });
+  const [contact, setContacts] = useState({ name: '', number: '' });
 
   const dispatch = useDispatch();
 
-  const { name, phone } = contact;
+  const { name, number } = contact;
 
   const nameInputId = nanoid();
   const numberInputId = nanoid();
@@ -36,7 +36,7 @@ export function ContactForm() {
   const handleAddContact = event => {
     event.preventDefault();
 
-    const newContactItem = { name, phone };
+    const newContactItem = { name, number };
 
     dispatch(fetchAddContact(newContactItem));
 
@@ -44,7 +44,7 @@ export function ContactForm() {
   };
 
   const reset = () => {
-    setContacts({ name: '', phone: '' });
+    setContacts({ name: '', number: '' });
   };
 
   return (
@@ -73,9 +73,9 @@ export function ContactForm() {
             className={css.input__number}
             placeholder="exemple: 123-12-12"
             type="tel"
-            name="phone"
+            name="number"
             id={numberInputId}
-            value={phone}
+            value={number}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
