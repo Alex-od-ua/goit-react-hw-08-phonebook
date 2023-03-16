@@ -1,3 +1,3 @@
-export const isUserLogin = ({ auth }) => auth.isLogin;
+export const isUserLogin = store => store.auth.isLogin; //= ({ auth }) => auth.isLogin;
 
-export const getUserName = ({ auth }) => auth.user;
+export const getUserName = store => store.auth.user; //= ({ auth }) => auth.user;

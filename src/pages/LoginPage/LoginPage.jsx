@@ -1,15 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+// import { Navigate } from 'react-router-dom';
 
 import { login } from 'Redux/auth/auth-operations';
-import { isUserLogin } from 'Redux/auth/auth-selectors';
+// import { isUserLogin } from 'Redux/auth/auth-selectors';
 
 import LoginForm from 'components/LoginForm/LoginForm';
 
 import css from './LoginPage.module.css';
 
 const LoginPage = () => {
-  const isLogin = useSelector(isUserLogin);
+  // const isLogin = useSelector(isUserLogin);
 
   const dispatch = useDispatch();
 
@@ -17,9 +17,9 @@ const LoginPage = () => {
     dispatch(login(data));
   };
 
-  if (isLogin) {
-    return <Navigate to="/contacts" />;
-  }
+  // if (isLogin) {
+  //   return <Navigate to="/contacts" />;
+  // }
 
   return (
     <div className={css.container}>
