@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Container } from '@mui/material';
 
 import { isUserLogin } from 'Redux/auth/auth-selectors';
 
@@ -17,7 +18,9 @@ import css from './NavBar.module.css';
 const NavBar = () => {
   const isLogin = useSelector(isUserLogin);
 
-  const elements = items.map(({ id, text, link }) => (
+  const filteredItems = !isLogin ? items.filter(item => !item.private) : items; //hidden links with - privat: true (on logout)
+
+  const elements = filteredItems.map(({ id, text, link }) => (
     <li key={id}>
       <NavLink className={css.link} to={link}>
         {text}
@@ -27,15 +30,15 @@ const NavBar = () => {
 
   return (
     <div className={css.navbar}>
-      <div className={css.container}>
-        <div>
+      <Container maxWidth="xl">
+        <div className={css.navbar_items}>
           <ul className={css.menu}>{elements}</ul>
+          <div className={css.navbar_auth}>
+            {!isLogin && <NavBarAuth />}
+            {isLogin && <NavBarUser />}
+          </div>
         </div>
-        <div>
-          {!isLogin && <NavBarAuth />}
-          {isLogin && <NavBarUser />}
-        </div>
-      </div>
+      </Container>
     </div>
   );
 };

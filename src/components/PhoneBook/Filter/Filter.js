@@ -18,12 +18,13 @@ export const Filter = () => {
     <>
       <h2 className={css.main__title}>Contacts</h2>
       <div className={css.filter__item}>
-        <h3 className={css.filter__title}>Find contacts by name</h3>
+        {/* <h4 className={css.filter__title}>Find contacts by name</h4> */}
         <input
           className={css.filter__input}
           type="text"
           value={filter}
           pattern="^[a-zA-Za-яА-Я]+(([' -][a-zA-Za-яА-Я ])?[a-zA-Za-яА-Я]*)*$"
+          placeholder="Find contacts by name"
           onChange={handleFilterChange}
         />
       </div>

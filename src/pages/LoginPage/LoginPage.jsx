@@ -1,6 +1,8 @@
 import { useDispatch } from 'react-redux';
 // import { Navigate } from 'react-router-dom';
 
+import { Container } from '@mui/material';
+
 import { login } from 'Redux/auth/auth-operations';
 // import { isUserLogin } from 'Redux/auth/auth-selectors';
 
@@ -22,10 +24,12 @@ const LoginPage = () => {
   // }
 
   return (
-    <div className={css.container}>
-      <h1 className={css.title}>Login page</h1>
-      <LoginForm onSubmit={handleLogin} />
-    </div>
+    <Container maxWidth="xl">
+      <div className={css.wrapper}>
+        <h2 className={css.title}>Login page</h2>
+        <LoginForm onSubmit={handleLogin} />
+      </div>
+    </Container>
   );
 };
 

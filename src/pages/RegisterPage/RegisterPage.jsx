@@ -1,6 +1,8 @@
 import { useDispatch } from 'react-redux';
 // import { Navigate } from 'react-router-dom';
 
+import { Container } from '@mui/material';
+
 import { signup } from 'Redux/auth/auth-operations';
 // import { isUserLogin } from 'Redux/auth/auth-selectors';
 
@@ -22,10 +24,12 @@ const RegisterPage = () => {
   // }
 
   return (
-    <div className={css.container}>
-      <h1 className={css.title}>Register page</h1>
-      <RegisterForm onSubmit={handleSignup} />
-    </div>
+    <Container maxWidth="xl">
+      <div className={css.wrapper}>
+        <h2 className={css.title}>Register page</h2>
+        <RegisterForm onSubmit={handleSignup} />
+      </div>
+    </Container>
   );
 };
 

@@ -3,8 +3,9 @@ import useForm from 'shared/hooks/useForm';
 import initialState from './initialState';
 import TextField from 'shared/components/TextField/TextField';
 import fields from './fields';
-import Button from 'shared/components/Button/Button';
+// import Button from 'shared/components/Button/Button';
 
+import Button from '@mui/material/Button';
 import css from './RegisterForm.module.css';
 
 const RegisterForm = ({ onSubmit }) => {
@@ -24,7 +25,9 @@ const RegisterForm = ({ onSubmit }) => {
         handleChange={handleChange}
         {...fields.password}
       />
-      <Button>Register</Button>
+      <Button type="submit" variant="contained">
+        Register
+      </Button>
     </form>
   );
 };

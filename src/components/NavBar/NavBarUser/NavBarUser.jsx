@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getUserName } from 'Redux/auth/auth-selectors';
 import { logout } from 'Redux/auth/auth-operations';
 
-// import css from './NavBarUser.module.css';
+import Button from '@mui/material/Button';
+import css from './NavBarUser.module.css';
 
 const NavBarUser = () => {
   const { name, email } = useSelector(getUserName);
@@ -15,9 +16,12 @@ const NavBarUser = () => {
   };
 
   return (
-    <div>
-      {name}, {email} <button onClick={onLogout}>Logout</button>
-      <button>Кнопка-Хуёпка</button>
+    <div className={css.info}>
+      {name}, {email}{' '}
+      <Button variant="contained" onClick={onLogout}>
+        {' '}
+        Logout
+      </Button>
     </div>
   );
 };

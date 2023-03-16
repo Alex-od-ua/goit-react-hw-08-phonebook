@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+import { toast } from 'react-toastify';
+
 import * as api from 'shared/services/contacts-api';
 
 export const fetchAllContacts = createAsyncThunk(
@@ -10,6 +12,7 @@ export const fetchAllContacts = createAsyncThunk(
       const data = await api.getAllContacts();
       return data;
     } catch ({ response }) {
+      toast.error(` Sorry,${response.data}`);
       return thunkAPI.rejectWithValue(response.data.massage);
     }
   }
@@ -23,22 +26,23 @@ export const fetchAddContact = createAsyncThunk(
       const result = await api.addContacts(data);
       return result;
     } catch ({ response }) {
+      toast.error(` Sorry,${response.data}`);
       return rejectWithValue(response.data.massage);
     }
   },
   {
-    condition: ({ name, phone }, { getState }) => {
+    condition: ({ name, number }, { getState }) => {
       const { contacts } = getState();
       const normalizedName = name.toLowerCase();
-      const phoneNumber = phone;
+      const phoneNumber = number;
 
       const result = contacts.items.find(
-        ({ name, phone }) =>
-          name.toLowerCase() === normalizedName && phone === phoneNumber
+        ({ name, number }) =>
+          name.toLowerCase() === normalizedName && number === phoneNumber
       );
 
       if (result) {
-        alert(`${name}: ${phone} is already in contacts!`);
+        toast.error(`${name}: ${number} is already in contacts!`);
         return false;
       }
     },
@@ -53,6 +57,7 @@ export const fetchDeleteContact = createAsyncThunk(
       await api.deleteContacts(id);
       return id;
     } catch ({ response }) {
+      toast.error(` Sorry,${response.data}`);
       return rejectWithValue(response.data.massage);
     }
   }

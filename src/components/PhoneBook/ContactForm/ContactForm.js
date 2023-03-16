@@ -4,10 +4,14 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 
+import Button from '@mui/material/Button';
+
 import {
   fetchAllContacts,
   fetchAddContact,
 } from 'Redux/contacts/contacts-operations';
+
+// import { toast } from 'react-toastify';
 
 import css from './ContactForm.module.css';
 
@@ -35,11 +39,9 @@ export function ContactForm() {
 
   const handleAddContact = event => {
     event.preventDefault();
-
     const newContactItem = { name, number };
 
     dispatch(fetchAddContact(newContactItem));
-
     reset();
   };
 
@@ -49,7 +51,7 @@ export function ContactForm() {
 
   return (
     <>
-      <h1 className={css.main__title}>Phonebook</h1>
+      <h2 className={css.main__title}>Phonebook</h2>
       <form className={css.contact__form} onSubmit={handleAddContact}>
         <label htmlFor={nameInputId}>
           Name
@@ -83,9 +85,9 @@ export function ContactForm() {
           />
         </label>
 
-        <button type="submit" className={css.input__btn}>
+        <Button type="submit" variant="contained" className={css.input__btn}>
           Add contact
-        </button>
+        </Button>
       </form>
     </>
   );
