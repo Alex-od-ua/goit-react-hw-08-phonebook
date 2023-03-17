@@ -34,11 +34,10 @@ export const fetchAddContact = createAsyncThunk(
     condition: ({ name, number }, { getState }) => {
       const { contacts } = getState();
       const normalizedName = name.toLowerCase();
-      const phoneNumber = number;
+      // const phoneNumber = number;
 
       const result = contacts.items.find(
-        ({ name, number }) =>
-          name.toLowerCase() === normalizedName && number === phoneNumber
+        ({ name }) => name.toLowerCase() === normalizedName
       );
 
       if (result) {
