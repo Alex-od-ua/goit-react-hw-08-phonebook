@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+import { toast } from 'react-toastify';
+
 import * as api from 'shared/services/auth-api';
 
 export const signup = createAsyncThunk(
@@ -9,6 +11,8 @@ export const signup = createAsyncThunk(
       const result = await api.signupUser(data);
       return result;
     } catch ({ response }) {
+      console.log(response);
+      toast.error(response.data.massage);
       return thunkAPI.rejectWithValue(response.data.massage);
     }
   }
@@ -19,6 +23,8 @@ export const login = createAsyncThunk('auth/login', async (data, thunkAPI) => {
     const result = await api.userLogin(data);
     return result;
   } catch ({ response }) {
+    console.log(response);
+    toast.error(response.statusText);
     return thunkAPI.rejectWithValue(response.data.massage);
   }
 });

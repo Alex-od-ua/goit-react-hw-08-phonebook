@@ -8,6 +8,9 @@ import { login } from 'Redux/auth/auth-operations';
 
 import LoginForm from 'components/LoginForm/LoginForm';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import css from './LoginPage.module.css';
 
 const LoginPage = () => {
@@ -29,6 +32,7 @@ const LoginPage = () => {
         <h2 className={css.title}>Login page</h2>
         <LoginForm onSubmit={handleLogin} />
       </div>
+      <ToastContainer autoClose={1500} position="top-center" />
     </Container>
   );
 };

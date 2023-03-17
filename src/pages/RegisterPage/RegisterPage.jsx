@@ -8,6 +8,9 @@ import { signup } from 'Redux/auth/auth-operations';
 
 import RegisterForm from 'components/RegisterForm/RegisterForm';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import css from './RegisterPage.module.css';
 
 const RegisterPage = () => {
@@ -29,6 +32,7 @@ const RegisterPage = () => {
         <h2 className={css.title}>Register page</h2>
         <RegisterForm onSubmit={handleSignup} />
       </div>
+      <ToastContainer autoClose={1500} position="top-center" />
     </Container>
   );
 };
